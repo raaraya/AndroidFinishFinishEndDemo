@@ -5,6 +5,8 @@ import android.view.ViewGroup;
 
 import com.example.businessapp.ui.screens.common.BaseView;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
 
 public class HomeView extends BaseView {
 
