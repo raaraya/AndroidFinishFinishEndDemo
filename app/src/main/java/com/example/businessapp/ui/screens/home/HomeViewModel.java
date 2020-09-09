@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.businessapp.api.models.PuntoVenta;
 import com.example.businessapp.repositories.PuntosVentaRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -16,7 +17,7 @@ import javax.inject.Inject;
 public class HomeViewModel extends ViewModel {
 
     private PuntosVentaRepository puntosVentaRepository;
-    private LiveData<List<PuntoVenta>> puntosVenta;
+    private ArrayList<PuntoVenta> puntosVenta;
 
 //    public HomeViewModel() { }
 

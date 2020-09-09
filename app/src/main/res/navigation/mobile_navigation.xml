@@ -5,7 +5,94 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.businessapp.ui.screens.home.HomeController"
+        android:name="com.example.businessapp.ui.screens.home.HomeFragment"
         android:label="Puntos de Venta"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_nuevo_punto_wizard"
+            app:destination="@id/nav_nuevo_punto_wizard_group" />
+        <action
+            android:id="@+id/action_homeFragment_to_nuevo_vendedor_wizard"
+            app:destination="@id/nav_nuevo_vendedor_wizard_group" />
+    </fragment>
+    <navigation android:id="@+id/nav_nuevo_vendedor_wizard_group"
+        app:startDestination="@id/pasoUnoFragment">
+        <fragment
+            android:id="@+id/pasoUnoFragment"
+            android:name="com.example.businessapp.ui.screens.wizards.nuevopunto.pasouno.PasoUnoFragment"
+            android:label="Paso 1"
+            tools:layout="@layout/paso_uno_fragment">
+            <action
+                android:id="@+id/action_nuevo_next"
+                app:destination="@id/pasoDosFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/pasoDosFragment"
+            android:name="com.example.businessapp.ui.screens.wizards.nuevopunto.pasodos.PasoDosFragment"
+            android:label="Paso 2"
+            tools:layout="@layout/fragment_paso_dos">
+            <action
+                android:id="@+id/action_nuevo_next"
+                app:destination="@id/pasoTresFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/pasoTresFragment"
+            android:name="com.example.businessapp.ui.screens.wizards.nuevopunto.pasotres.PasoTresFragment"
+            android:label="Paso 3"
+            tools:layout="@layout/fragment_paso_tres">
+            <action
+                android:id="@+id/action_nuevo_next"
+                app:destination="@id/pasoCuatroFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/pasoCuatroFragment"
+            android:name="com.example.businessapp.ui.screens.wizards.nuevopunto.pasocuatro.PasoCuatroFragment"
+            android:label="Paso 4"
+            tools:layout="@layout/fragment_paso_cuatro">
+            <action
+                android:id="@+id/action_finalizar"
+                app:popUpTo="@id/homeFragment"
+                app:popUpToInclusive="false" />
+        </fragment>
+    </navigation>
+    <navigation android:id="@+id/nav_nuevo_punto_wizard_group"
+        app:startDestination="@id/pasoUnoFragment">
+        <fragment
+            android:id="@+id/pasoUnoFragment"
+            android:name="com.example.businessapp.ui.screens.wizards.nuevopunto.pasouno.PasoUnoFragment"
+            android:label="Paso 1"
+            tools:layout="@layout/paso_uno_fragment" >
+            <action
+                android:id="@+id/action_nuevo_next"
+                app:destination="@id/pasoDosFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/pasoDosFragment"
+            android:name="com.example.businessapp.ui.screens.wizards.nuevopunto.pasodos.PasoDosFragment"
+            android:label="Paso 2"
+            tools:layout="@layout/fragment_paso_dos" >
+            <action
+                android:id="@+id/action_nuevo_next"
+                app:destination="@id/pasoTresFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/pasoTresFragment"
+            android:name="com.example.businessapp.ui.screens.wizards.nuevopunto.pasotres.PasoTresFragment"
+            android:label="Paso 3"
+            tools:layout="@layout/fragment_paso_tres" >
+            <action
+                android:id="@+id/action_nuevo_next"
+                app:destination="@id/pasoCuatroFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/pasoCuatroFragment"
+            android:name="com.example.businessapp.ui.screens.wizards.nuevopunto.pasocuatro.PasoCuatroFragment"
+            android:label="Paso 4"
+            tools:layout="@layout/fragment_paso_cuatro" >
+            <action
+                android:id="@+id/action_finalizar"
+                app:popUpTo="@id/homeFragment"
+                app:popUpToInclusive="false" />
+        </fragment>
+    </navigation>
 </navigation>

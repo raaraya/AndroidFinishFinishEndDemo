@@ -9,16 +9,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import com.example.businessapp.R;
 import com.example.businessapp.ui.screens.common.BaseView;
 
-import javax.inject.Inject;
-
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
-public class HomeController extends Fragment {
+public class HomeFragment extends Fragment {
 
     private BaseView homeView;
     public HomeViewModel viewModel;
@@ -39,5 +38,13 @@ public class HomeController extends Fragment {
 
         viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         viewModel.getPuntosVenta();
+
+        view.findViewById(R.id.nuevo_punto_wizard_button).setOnClickListener(
+                Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_nuevo_punto_wizard)
+        );
+
+        view.findViewById(R.id.nuevo_vendedor_wizard_button).setOnClickListener(
+                Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_nuevo_vendedor_wizard)
+        );
     }
 }
