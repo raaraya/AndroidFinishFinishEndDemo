@@ -19,7 +19,7 @@ public class PasoDosFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_paso_dos, container, false);
+        return inflater.inflate(R.layout.paso_dos_fragment, container, false);
     }
 
     @Override

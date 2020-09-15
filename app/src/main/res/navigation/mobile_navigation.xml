@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_homeFragment_to_nuevo_vendedor_wizard"
             app:destination="@id/nav_nuevo_vendedor_wizard_group" />
+        <action
+            android:id="@+id/action_homeFragment_to_usuariosFragment"
+            app:destination="@id/usuariosFragment" />
     </fragment>
     <navigation android:id="@+id/nav_nuevo_vendedor_wizard_group"
         app:startDestination="@id/pasoUnoFragment">
@@ -30,7 +33,7 @@
             android:id="@+id/pasoDosFragment"
             android:name="com.example.businessapp.ui.screens.wizards.nuevopunto.pasodos.PasoDosFragment"
             android:label="Paso 2"
-            tools:layout="@layout/fragment_paso_dos">
+            tools:layout="@layout/paso_dos_fragment">
             <action
                 android:id="@+id/action_nuevo_next"
                 app:destination="@id/pasoTresFragment" />
@@ -39,7 +42,7 @@
             android:id="@+id/pasoTresFragment"
             android:name="com.example.businessapp.ui.screens.wizards.nuevopunto.pasotres.PasoTresFragment"
             android:label="Paso 3"
-            tools:layout="@layout/fragment_paso_tres">
+            tools:layout="@layout/paso_tres_fragment">
             <action
                 android:id="@+id/action_nuevo_next"
                 app:destination="@id/pasoCuatroFragment" />
@@ -48,7 +51,7 @@
             android:id="@+id/pasoCuatroFragment"
             android:name="com.example.businessapp.ui.screens.wizards.nuevopunto.pasocuatro.PasoCuatroFragment"
             android:label="Paso 4"
-            tools:layout="@layout/fragment_paso_cuatro">
+            tools:layout="@layout/paso_cuatro_fragment">
             <action
                 android:id="@+id/action_finalizar"
                 app:popUpTo="@id/homeFragment"
@@ -70,7 +73,7 @@
             android:id="@+id/pasoDosFragment"
             android:name="com.example.businessapp.ui.screens.wizards.nuevopunto.pasodos.PasoDosFragment"
             android:label="Paso 2"
-            tools:layout="@layout/fragment_paso_dos" >
+            tools:layout="@layout/paso_dos_fragment" >
             <action
                 android:id="@+id/action_nuevo_next"
                 app:destination="@id/pasoTresFragment" />
@@ -79,7 +82,7 @@
             android:id="@+id/pasoTresFragment"
             android:name="com.example.businessapp.ui.screens.wizards.nuevopunto.pasotres.PasoTresFragment"
             android:label="Paso 3"
-            tools:layout="@layout/fragment_paso_tres" >
+            tools:layout="@layout/paso_tres_fragment" >
             <action
                 android:id="@+id/action_nuevo_next"
                 app:destination="@id/pasoCuatroFragment" />
@@ -88,11 +91,15 @@
             android:id="@+id/pasoCuatroFragment"
             android:name="com.example.businessapp.ui.screens.wizards.nuevopunto.pasocuatro.PasoCuatroFragment"
             android:label="Paso 4"
-            tools:layout="@layout/fragment_paso_cuatro" >
+            tools:layout="@layout/paso_cuatro_fragment" >
             <action
                 android:id="@+id/action_finalizar"
                 app:popUpTo="@id/homeFragment"
                 app:popUpToInclusive="false" />
         </fragment>
     </navigation>
+    <fragment
+        android:id="@+id/usuariosFragment"
+        android:name="com.example.businessapp.ui.screens.usuarios.UsuariosFragment"
+        android:label="UsuariosFragment" />
 </navigation>

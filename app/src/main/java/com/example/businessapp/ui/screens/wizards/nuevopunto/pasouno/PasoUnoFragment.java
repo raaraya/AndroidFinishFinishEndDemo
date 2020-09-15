@@ -1,6 +1,6 @@
 package com.example.businessapp.ui.screens.wizards.nuevopunto.pasouno;
 
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 
@@ -32,7 +32,7 @@ public class PasoUnoFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(PasoUnoViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(PasoUnoViewModel.class);
         // TODO: Use the ViewModel
     }
 

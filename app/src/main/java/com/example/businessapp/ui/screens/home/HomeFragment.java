@@ -7,28 +7,34 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.businessapp.R;
-import com.example.businessapp.ui.screens.common.BaseView;
+import com.example.businessapp.databinding.FragmentHomeBinding;
+
 
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
 public class HomeFragment extends Fragment {
 
-    private BaseView homeView;
     public HomeViewModel viewModel;
 
+    private FragmentHomeBinding binding;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
 
-        homeView = new HomeView(inflater, container);
-
-        return homeView.getRootView();
+        return binding.getRoot();
     }
 
 
@@ -37,13 +43,16 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-        viewModel.getPuntosVenta();
 
-        view.findViewById(R.id.nuevo_punto_wizard_button).setOnClickListener(
+        binding.usuariosButton.setOnClickListener(
+                Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_usuariosFragment)
+        );
+
+        binding.nuevoPuntoWizardButton.setOnClickListener(
                 Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_nuevo_punto_wizard)
         );
 
-        view.findViewById(R.id.nuevo_vendedor_wizard_button).setOnClickListener(
+        binding.nuevoVendedorWizardButton.setOnClickListener(
                 Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_nuevo_vendedor_wizard)
         );
     }
