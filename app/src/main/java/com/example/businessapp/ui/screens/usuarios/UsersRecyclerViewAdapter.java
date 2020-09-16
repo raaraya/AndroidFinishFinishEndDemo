@@ -1,5 +1,6 @@
 package com.example.businessapp.ui.screens.usuarios;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
 
@@ -42,7 +44,16 @@ public class UsersRecyclerViewAdapter extends Adapter<UsersRecyclerViewAdapter.U
 
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
+        Bundle bundle = new Bundle();
+        bundle.putString("userId", usersList.getValue().get(position).getId());
+
         holder.textView.setText(usersList.getValue().get(position).getName());
+        holder.textView.setOnClickListener(
+                Navigation.createNavigateOnClickListener(
+                        R.id.action_usuariosFragment_to_detalleUsuarioFragment,
+                        bundle
+                )
+        );
     }
 
     @Override

@@ -29,10 +29,6 @@ public class UsuariosFragment extends Fragment {
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -42,7 +38,7 @@ public class UsuariosFragment extends Fragment {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.usuarios_fragment, container, false);
         binding.setViewmodel(usuariosViewModel);
-
+        binding.setLifecycleOwner(getActivity());
 
         setupUsersRecyclerView();
 

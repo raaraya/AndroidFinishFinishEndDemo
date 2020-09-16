@@ -101,5 +101,18 @@
     <fragment
         android:id="@+id/usuariosFragment"
         android:name="com.example.businessapp.ui.screens.usuarios.UsuariosFragment"
-        android:label="UsuariosFragment" />
+        android:label="UsuariosFragment" >
+        <action
+            android:id="@+id/action_usuariosFragment_to_detalleUsuarioFragment"
+            app:destination="@id/detalleUsuarioFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleUsuarioFragment"
+        android:name="com.example.businessapp.ui.screens.detalleusuario.DetalleUsuarioFragment"
+        android:label="detalle_usuario_fragment"
+        tools:layout="@layout/detalle_usuario_fragment" >
+        <argument
+            android:name="userId"
+            app:argType="string" />
+    </fragment>
 </navigation>
