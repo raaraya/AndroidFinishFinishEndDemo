@@ -64,8 +64,6 @@ public class UsuariosFragment extends Fragment {
         adapter = new UsersRecyclerViewAdapter(usuariosViewModel.users);
         recyclerView.setAdapter(adapter);
 
-        usuariosViewModel.users.observe(getActivity(), users -> {
-            adapter.notifyDataSetChanged();
-        });
+        usuariosViewModel.users.observe(getActivity(), users -> adapter.notifyDataSetChanged());
     }
 }
