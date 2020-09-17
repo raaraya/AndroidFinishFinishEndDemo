@@ -12,7 +12,7 @@ public class RetrofitService {
                 .build();
     }
 
-    public static <T> T createAPI(Class<T> serviceClass, String baseUrl) {
+    public static <T> T createAPIService(Class<T> serviceClass, String baseUrl) {
         return retrofitBuilder(baseUrl).create(serviceClass);
     }
 
