@@ -7,9 +7,9 @@ public class User {
     String name;
     String email;
     String telephone;
-    String age;
+    int age;
 
-    public User(String id, String name, String email, String telephone, String age) {
+    public User(String id, String name, String email, String telephone, int age) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -45,10 +45,10 @@ public class User {
         this.telephone = telephone;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 }
