@@ -48,6 +48,10 @@ public class HomeFragment extends Fragment {
                 Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_usuariosFragment)
         );
 
+        binding.usuariosNuevo.setOnClickListener(
+                Navigation.createNavigateOnClickListener(R.id.action_nuevoUsuario)
+        );
+
         binding.nuevoPuntoWizardButton.setOnClickListener(
                 Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_nuevo_punto_wizard)
         );

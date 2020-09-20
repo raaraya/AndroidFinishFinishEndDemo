@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_homeFragment_to_usuariosFragment"
             app:destination="@id/usuariosFragment" />
+        <action
+            android:id="@+id/action_nuevoUsuario"
+            app:destination="@id/nav_nuevoUsuario" />
     </fragment>
     <navigation android:id="@+id/nav_nuevo_vendedor_wizard_group"
         app:startDestination="@id/pasoUnoFragment">
@@ -115,4 +118,61 @@
             android:name="userId"
             app:argType="string" />
     </fragment>
+    <navigation android:id="@+id/nav_nuevoUsuario"
+        app:startDestination="@id/nuevoUsuarioInicioFragment">
+        <fragment
+            android:id="@+id/nuevoUsuarioInicioFragment"
+            android:name="com.example.businessapp.ui.screens.wizards.nuevousuario.NuevoUsuarioInicioFragment"
+            android:label="Nuevo Usuario"
+            tools:layout="@layout/fragment_nuevo_usuario_inicio">
+            <action
+                android:id="@+id/action_nuevoUsuarioNext"
+                app:destination="@id/nuevoUsuarioPasoUnoFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/nuevoUsuarioPasoUnoFragment"
+            android:name="com.example.businessapp.ui.screens.wizards.nuevousuario.NuevoUsuarioPasoUnoFragment"
+            android:label="Nuevo Usuario - Paso 1"
+            tools:layout="@layout/fragment_nuevo_usuario_paso_uno">
+            <action
+                android:id="@+id/action_nuevoUsuarioNext"
+                app:destination="@id/nuevoUsuarioPasoDosFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/nuevoUsuarioPasoDosFragment"
+            android:name="com.example.businessapp.ui.screens.wizards.nuevousuario.NuevoUsuarioPasoDosFragment"
+            android:label="Nuevo Usuario - Paso 2"
+            tools:layout="@layout/fragment_nuevo_usuario_paso_dos">
+            <action
+                android:id="@+id/action_nuevoUsuarioNext"
+                app:destination="@id/nuevoUsuarioPasoTresFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/nuevoUsuarioPasoTresFragment"
+            android:name="com.example.businessapp.ui.screens.wizards.nuevousuario.NuevoUsuarioPasoTresFragment"
+            android:label="Nuevo Usuario - Paso 3"
+            tools:layout="@layout/fragment_nuevo_usuario_paso_tres">
+            <action
+                android:id="@+id/action_nuevoUsuarioNext"
+                app:destination="@id/nuevoUsuarioPasoCuatroFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/nuevoUsuarioPasoCuatroFragment"
+            android:name="com.example.businessapp.ui.screens.wizards.nuevousuario.NuevoUsuarioPasoCuatroFragment"
+            android:label="Nuevo Usuario - Paso 4"
+            tools:layout="@layout/fragment_nuevo_usuario_paso_cuatro">
+            <action
+                android:id="@+id/action_nuevoUsuarioNext"
+                app:destination="@id/nuevoUsuarioConfirmacionFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/nuevoUsuarioConfirmacionFragment"
+            android:name="com.example.businessapp.ui.screens.wizards.nuevousuario.NuevoUsuarioConfirmacionFragment"
+            android:label="Nuevo Usuario - Paso 5"
+            tools:layout="@layout/fragment_nuevo_usuario_confirmacion">
+            <action
+                android:id="@+id/action_to_home"
+                app:popUpTo="@id/homeFragment" />
+        </fragment>
+    </navigation>
 </navigation>
