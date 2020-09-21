@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 
 import com.example.businessapp.R;
 import com.example.businessapp.databinding.DetalleUsuarioFragmentBinding;
+import com.example.businessapp.ui.screens.usuarios.UsuariosFragmentDirections;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -47,9 +48,8 @@ public class DetalleUsuarioFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Bundle bundle = getArguments();
-
         if(bundle != null) {
-            String userId = bundle.getString("userId");
+            String userId = DetalleUsuarioFragmentArgs.fromBundle(bundle).getUserId();
 
             mViewModel.getUsuario(userId);
         }

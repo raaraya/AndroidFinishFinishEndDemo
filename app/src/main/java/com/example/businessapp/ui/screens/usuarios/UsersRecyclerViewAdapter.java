@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView.Adapter;
 import com.example.businessapp.R;
 import com.example.businessapp.api.models.User;
 
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -44,15 +43,14 @@ public class UsersRecyclerViewAdapter extends Adapter<UsersRecyclerViewAdapter.U
 
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
-        Bundle bundle = new Bundle();
-        bundle.putString("userId", usersList.getValue().get(position).getId());
+//        Bundle bundle = new Bundle();
+//        bundle.putString("userId", usersList.getValue().get(position).getId());
+
+        UsuariosFragmentDirections.ActionUsuariosFragmentToDetalleUsuarioFragment navAction = UsuariosFragmentDirections.actionUsuariosFragmentToDetalleUsuarioFragment(usersList.getValue().get(position).getId());
 
         holder.textView.setText(usersList.getValue().get(position).getName());
         holder.textView.setOnClickListener(
-                Navigation.createNavigateOnClickListener(
-                        R.id.action_usuariosFragment_to_detalleUsuarioFragment,
-                        bundle
-                )
+                Navigation.createNavigateOnClickListener(navAction)
         );
     }
 
