@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -28,7 +29,8 @@ public class NuevoUsuarioConfirmacionFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        viewModel = new ViewModelProvider(requireActivity()).get(NuevoUsuarioViewModel.class);
+        NavController navController = NavHostFragment.findNavController(this);
+        viewModel = new ViewModelProvider(navController.getViewModelStoreOwner(R.id.nav_nuevoUsuario)).get(NuevoUsuarioViewModel.class);
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_nuevo_usuario_confirmacion, container, false);
         binding.setLifecycleOwner(getActivity());

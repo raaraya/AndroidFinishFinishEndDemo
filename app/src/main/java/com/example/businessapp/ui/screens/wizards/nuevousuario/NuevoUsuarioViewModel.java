@@ -33,6 +33,7 @@ public class NuevoUsuarioViewModel extends ViewModel {
             user.getValue().setId("ID_ID_ID_ID");
             working.postValue(false);
             saved.postValue(true);
+//            user.postValue(new User());
         }, 10000);
     }
 

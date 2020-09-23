@@ -7,7 +7,9 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +30,8 @@ public class NuevoUsuarioPasoUnoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-         viewModel = new ViewModelProvider(requireActivity()).get(NuevoUsuarioViewModel.class);
+         NavController navController = NavHostFragment.findNavController(this);
+         viewModel = new ViewModelProvider(navController.getViewModelStoreOwner(R.id.nav_nuevoUsuario)).get(NuevoUsuarioViewModel.class);
 
          binding = DataBindingUtil.inflate(inflater, R.layout.fragment_nuevo_usuario_paso_uno, container, false);
          binding.setLifecycleOwner(getActivity());
