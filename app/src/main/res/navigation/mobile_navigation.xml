@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/homeFragment">
+
+
+    <!-- acciones globales -->
+
+    <!-- fin acciones globales -->
+
+
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.businessapp.ui.screens.home.HomeFragment"
@@ -175,4 +182,9 @@
                 app:popUpTo="@id/homeFragment" />
         </fragment>
     </navigation>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.businessapp.ui.screens.login.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment" />
 </navigation>
