@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="userViewModel"
             type="com.example.businessapp.ui.UserViewModel" />
@@ -10,87 +11,114 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.screens.home.HomeFragment">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Home"
-                android:textSize="50dp"
-                android:layout_gravity="center"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{userViewModel.estaLogueado ? `Logueado` : `No Logueado`}"
-                android:textSize="25dp"
-                android:layout_gravity="center" />
-
-            <Button
-                android:id="@+id/btnLogout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cerrar Sesion"
-                android:layout_gravity="center"
-                style="@style/Widget.MaterialComponents.Button"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="bottom">
+            android:layout_height="match_parent"
+            tools:context=".ui.screens.home.HomeFragment"
+            android:visibility="@{userViewModel.usuarioLogeado ? View.VISIBLE : View.GONE}">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center"
-                android:layout_margin="25dp">
+                android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/usuarios_button"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ver Usuarios"
+                    android:text="Home"
+                    android:textSize="50dp"
                     android:layout_gravity="center" />
 
-
-                <Button
-                    android:id="@+id/usuarios_nuevo"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nuevo Usuario"
+                    android:text="@{userViewModel.EstaLogueado ? `Logueado` : `No Logueado`}"
+                    android:textSize="25dp"
                     android:layout_gravity="center" />
+
+                <Button
+                    android:id="@+id/btnLogout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cerrar Sesion"
+                    android:layout_gravity="center"
+                    style="@style/Widget.MaterialComponents.Button" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:layout_gravity="bottom">
 
-                <Button
-                    android:id="@+id/nuevo_punto_wizard_button"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Iniciar Nuevo Punto Wizard" />
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:layout_margin="25dp">
 
-                <Button
-                    android:id="@+id/nuevo_vendedor_wizard_button"
+                    <Button
+                        android:id="@+id/usuarios_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ver Usuarios"
+                        android:layout_gravity="center" />
+
+
+                    <Button
+                        android:id="@+id/usuarios_nuevo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nuevo Usuario"
+                        android:layout_gravity="center" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Iniciar Nuevo Vendedor Wizard" />
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/nuevo_punto_wizard_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Iniciar Nuevo Punto Wizard" />
+
+                    <Button
+                        android:id="@+id/nuevo_vendedor_wizard_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Iniciar Nuevo Vendedor Wizard" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-        </LinearLayout>
+        </FrameLayout>
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.screens.home.HomeFragment"
+            android:visibility="@{!userViewModel.usuarioLogeado ? View.VISIBLE : View.GONE}">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Business App"
+                    android:textSize="50dp"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+        </FrameLayout>
     </FrameLayout>
 </layout>

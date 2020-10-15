@@ -1,5 +1,6 @@
 package com.example.businessapp.ui.screens.login;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
@@ -12,8 +13,11 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +39,6 @@ public class LoginFragment extends Fragment {
     private LoginFragmentBinding loginFragmentBinding;
 
 
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -52,7 +55,7 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        DeshabilitarBaryMenu();
+        DeshabilitarAppBaryMenu();
 
         savedStateHandle = Navigation.findNavController(view)
                                      .getPreviousBackStackEntry()
@@ -62,26 +65,30 @@ public class LoginFragment extends Fragment {
 
         loginFragmentBinding.loginUser.setOnClickListener(v -> {
             savedStateHandle.set(LOGIN_SUCCESSFUL, true);
-            userViewModel.LogUserIn();
-            HabilitarBaryMenu();
-            Navigation.findNavController(view).popBackStack();
+
+            userViewModel.iniciarSesion();
+
+            HabilitarAppBaryMenu();
+            Navigation.findNavController(view).popBackStack(R.id.homeFragment, false);
         });
 
     }
 
-    void DeshabilitarBaryMenu() {
+    void DeshabilitarAppBaryMenu() {
         DrawerLayout drawerLayout = requireActivity().findViewById(R.id.drawer_layout);
         drawerLayout.closeDrawer(GravityCompat.START);
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
-        ((AppCompatActivity)requireActivity()).getSupportActionBar().hide();
+        ActionBar actionBar = ((AppCompatActivity)requireActivity()).getSupportActionBar();
+        actionBar.hide();
     }
 
-    void HabilitarBaryMenu() {
+    void HabilitarAppBaryMenu() {
         DrawerLayout drawerLayout = requireActivity().findViewById(R.id.drawer_layout);
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
 
-        ((AppCompatActivity)requireActivity()).getSupportActionBar().show();
+        ActionBar actionBar = ((AppCompatActivity)requireActivity()).getSupportActionBar();
+        actionBar.show();
     }
 
 }

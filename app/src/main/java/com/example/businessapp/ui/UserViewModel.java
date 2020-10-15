@@ -7,12 +7,12 @@ import androidx.lifecycle.ViewModel;
 
 public class UserViewModel extends ViewModel {
 
-    MutableLiveData<Boolean> usuarioLogeado = new MutableLiveData<>(false);
+    public MutableLiveData<Boolean> usuarioLogeado = new MutableLiveData<>(false);
 
     public MutableLiveData<Boolean> getUsuarioLogeado() {
         return usuarioLogeado;
     }
-    public Boolean getEstaLogueado() {
+    public Boolean EstaLogueado() {
         return usuarioLogeado.getValue();
     }
 
@@ -21,11 +21,11 @@ public class UserViewModel extends ViewModel {
 
 
 
-    public void LogUserIn() {
+    public void iniciarSesion() {
         usuarioLogeado.setValue(true);
     }
 
-    public void LogOutUser() {
+    public void cerrarSesion() {
         usuarioLogeado.setValue(false);
     }
 

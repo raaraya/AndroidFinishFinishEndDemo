@@ -8,6 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
@@ -52,11 +53,20 @@ public class MainActivity extends AppCompatActivity {
         // pone el click en el menu que desloguea el usuario
         navigationView.setNavigationItemSelectedListener(menuItem -> {
             if (menuItem.getItemId() == R.id.loginFragment) {
-                userViewModel.LogOutUser();
+                userViewModel.cerrarSesion();
                 return true;
             }
             return false;
         });
+
+        // observa el estado de la sesion del usuario,
+        // si el usuario no esta logueado o se desloguea, se navega al login
+        userViewModel.usuarioLogeado.observe(this, logueado -> {
+            if (!logueado) {
+                navController.navigate(R.id.loginFragment);
+            }
+        });
+
     }
 
 
