@@ -1,7 +1,7 @@
 package com.example.businessapp.repositories;
 
 import com.example.businessapp.api.models.AuthenticateModel;
-import com.example.businessapp.api.models.AuthenticateResponse;
+import com.example.businessapp.api.models.UsuarioJPS;
 import com.example.businessapp.api.models.User;
 import com.example.businessapp.api.services.AuthenticationApiService;
 import com.example.businessapp.api.services.ResultCallBacks;
@@ -29,22 +29,22 @@ public class UsersRepository {
         this.authenticationApiService = authenticationApiService;
     }
 
-    public void authenticar(AuthenticateModel authenticateModel, ResultCallBacks<AuthenticateResponse> callBacks) {
+    public void authenticar(AuthenticateModel authenticateModel, ResultCallBacks<UsuarioJPS> callBacks) {
 
-        Call<AuthenticateResponse> call = authenticationApiService.autenticar(authenticateModel);
-        call.enqueue(new Callback<AuthenticateResponse>() {
+        Call<UsuarioJPS> call = authenticationApiService.autenticar(authenticateModel);
+        call.enqueue(new Callback<UsuarioJPS>() {
             @Override
-            public void onResponse(Call<AuthenticateResponse> call, Response<AuthenticateResponse> response) {
+            public void onResponse(Call<UsuarioJPS> call, Response<UsuarioJPS> response) {
                 if (!response.isSuccessful()) {
-                    return;
+                    callBacks.onFailure();
                 }
 
                 callBacks.onSuccess(response.body());
             }
 
             @Override
-            public void onFailure(Call<AuthenticateResponse> call, Throwable t) {
-
+            public void onFailure(Call<UsuarioJPS> call, Throwable t) {
+                callBacks.onFailure();
             }
         });
 

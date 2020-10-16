@@ -17,6 +17,7 @@ import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,7 +51,9 @@ public class LoginFragment extends Fragment {
             if(logueado) {
                 // si el login es exitoso, cambia el dato a true para indicar que el usuario pudo loguearse
                 savedStateHandle.set(LOGIN_SUCCESSFUL, true);
+
                 HabilitarAppBaryMenu();
+
                 // usa pop back stack para borrar toda la historia hasta llegar al home
                 NavHostFragment.findNavController(this).popBackStack(R.id.homeFragment, false);
             }
@@ -77,11 +80,16 @@ public class LoginFragment extends Fragment {
                                      .getSavedStateHandle();        // obtiene el saved state handle para guardar el dato
         // almacena el dato, este es un hashmap
         savedStateHandle.set(LOGIN_SUCCESSFUL, false);
+        loginViewModel.esperandoRespuesta.postValue(false);
 
         loginFragmentBinding.loginUser.setOnClickListener(v -> {
             loginViewModel.esperandoRespuesta.postValue(true);
-            AuthenticateModel authenticateModel = new AuthenticateModel("user_puntosventa", "123456.JPS");
-            userViewModel.iniciarSesion(authenticateModel);
+
+            // quema el usuario simulando un usuario entrado en texto
+            userViewModel.usuarioJPS.setUsername("user_puntosventa");
+            userViewModel.usuarioJPS.setPassword("123456.JPS");
+
+            userViewModel.iniciarSesion();
         });
     }
 

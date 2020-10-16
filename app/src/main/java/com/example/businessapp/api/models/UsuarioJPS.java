@@ -2,7 +2,7 @@ package com.example.businessapp.api.models;
 
 import java.util.Date;
 
-public class AuthenticateResponse {
+public class UsuarioJPS {
 
     String id;
     String username;
@@ -10,8 +10,11 @@ public class AuthenticateResponse {
     String lastName;
     String token;
     Date expire;
+    String password;
 
-    public AuthenticateResponse(String id, String username, String firstName, String lastName, String token, Date expire) {
+    public UsuarioJPS() {}
+
+    public UsuarioJPS(String id, String username, String firstName, String lastName, String token, Date expire) {
         this.id = id;
         this.username = username;
         this.firstName = firstName;
@@ -60,5 +63,12 @@ public class AuthenticateResponse {
     }
     public void setExpire(Date expire) {
         this.expire = expire;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

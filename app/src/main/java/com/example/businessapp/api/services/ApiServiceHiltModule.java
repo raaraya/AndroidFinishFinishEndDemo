@@ -2,7 +2,7 @@ package com.example.businessapp.api.services;
 
 import android.content.Context;
 
-import com.example.businessapp.R;
+import com.example.businessapp.api.services.retrofit.RetrofitService;
 
 import javax.inject.Singleton;
 

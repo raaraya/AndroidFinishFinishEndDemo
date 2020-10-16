@@ -1,4 +1,4 @@
-package com.example.businessapp.api.services;
+package com.example.businessapp.api.services.retrofit;
 
 import android.content.Context;
 
@@ -12,8 +12,8 @@ public class RetrofitService {
 
     private static OkHttpClient customClient(Context context) {
         return new OkHttpClient.Builder()
-                .authenticator(new TokenAuthenticator(context))
                 .addInterceptor(new TokenAuthInterceptor(context))
+                .authenticator(new TokenAuthenticator(context))
                 .build();
 
     }
@@ -24,7 +24,7 @@ public class RetrofitService {
 
         return new Retrofit.Builder()
                 .baseUrl(baseUrl)
-//                .client(customClient(context))
+                .client(customClient(context))
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
