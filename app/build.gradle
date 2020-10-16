@@ -34,6 +34,9 @@ android {
         Test {
             dimension 'Server'
         }
+        Dev_JPS {
+            dimension 'Server'
+        }
     }
 
     buildFeatures {

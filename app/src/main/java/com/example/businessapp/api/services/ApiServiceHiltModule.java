@@ -20,7 +20,13 @@ public class ApiServiceHiltModule {
     @Singleton
     @Provides
     public static UsersApiService provideUsersApiService(@ApplicationContext Context context) {
-        return RetrofitService.createAPIService(UsersApiService.class, context.getString(R.string.base_url));
+        return RetrofitService.createAPIService(UsersApiService.class, context);
+    }
+
+    @Singleton
+    @Provides
+    public static AuthenticationApiService provideAuthenticationApiService(@ApplicationContext Context context) {
+        return RetrofitService.createAPIService(AuthenticationApiService.class, context);
     }
 
 }
