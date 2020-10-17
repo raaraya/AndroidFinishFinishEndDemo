@@ -49,14 +49,6 @@ public class HomeFragment extends Fragment {
         // sets the user view model to handle user operations
         userViewModel = new ViewModelProvider(requireActivity()).get(UserViewModel.class);
 
-        // observa el estado de la sesion del usuario,
-        // si el usuario no esta logueado o se desloguea, se navega al login
-        userViewModel.usuarioLogeado.observe(getViewLifecycleOwner(), logueado -> {
-            if (!logueado) {
-                NavHostFragment.findNavController(this).navigate(R.id.loginFragment);
-            }
-        });
-
         binding.setUserViewModel(userViewModel);
 
         // pone el evento al boton de desloguear

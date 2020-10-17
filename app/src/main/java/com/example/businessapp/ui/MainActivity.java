@@ -59,6 +59,14 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
 
+        // observa el estado de la sesion del usuario,
+        // si el usuario no esta logueado o se desloguea, se navega al login
+        userViewModel.usuarioLogeado.observe(this, logueado -> {
+            if (!logueado) {
+                navController.navigate(R.id.loginFragment);
+            }
+        });
+
     }
 
 
