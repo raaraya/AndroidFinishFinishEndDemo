@@ -47,7 +47,23 @@ public class LoginFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         userViewModel = new ViewModelProvider(requireActivity()).get(UserViewModel.class);
-        userViewModel.usuarioLogeado.observe(requireActivity(), logueado -> {
+        loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+
+        loginFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.login_fragment, container, false);
+        loginFragmentBinding.setLifecycleOwner(getActivity());
+        loginFragmentBinding.setLoginViewModel(loginViewModel);
+
+
+        // crea y almacena el resultado en el saveState del navigation entry anterior
+        savedStateHandle = NavHostFragment.findNavController(this)
+                                          .getPreviousBackStackEntry()   // obtiene el back stack entry anterior
+                                          .getSavedStateHandle();        // obtiene el saved state handle para guardar el dato
+
+        // almacena el dato, este es un hashmap
+        savedStateHandle.set(LOGIN_SUCCESSFUL, false);
+        loginViewModel.esperandoRespuesta.postValue(false);
+
+        userViewModel.usuarioLogeado.observe(getViewLifecycleOwner(), logueado -> {
             if(logueado) {
                 // si el login es exitoso, cambia el dato a true para indicar que el usuario pudo loguearse
                 savedStateHandle.set(LOGIN_SUCCESSFUL, true);
@@ -59,11 +75,14 @@ public class LoginFragment extends Fragment {
             }
         });
 
-        loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
-
-        loginFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.login_fragment, container, false);
-        loginFragmentBinding.setLifecycleOwner(getActivity());
-        loginFragmentBinding.setLoginViewModel(loginViewModel);
+//        if (userViewModel.usuarioLogeado.getValue()){
+//            savedStateHandle.set(LOGIN_SUCCESSFUL, true);
+//
+//            HabilitarAppBaryMenu();
+//
+//            // usa pop back stack para borrar toda la historia hasta llegar al home
+//            NavHostFragment.findNavController(this).popBackStack(R.id.homeFragment, false);
+//        }
 
         return loginFragmentBinding.getRoot();
     }
@@ -74,14 +93,6 @@ public class LoginFragment extends Fragment {
 
         DeshabilitarAppBaryMenu();
 
-        // crea y almacena el resultado en el saveState del navigation entry anterior
-        savedStateHandle = Navigation.findNavController(view)
-                                     .getPreviousBackStackEntry()   // obtiene el back stack entry anterior
-                                     .getSavedStateHandle();        // obtiene el saved state handle para guardar el dato
-        // almacena el dato, este es un hashmap
-        savedStateHandle.set(LOGIN_SUCCESSFUL, false);
-        loginViewModel.esperandoRespuesta.postValue(false);
-
         loginFragmentBinding.loginUser.setOnClickListener(v -> {
             loginViewModel.esperandoRespuesta.postValue(true);
 
@@ -91,6 +102,8 @@ public class LoginFragment extends Fragment {
 
             userViewModel.iniciarSesion();
         });
+
+
     }
 
     void DeshabilitarAppBaryMenu() {

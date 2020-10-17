@@ -1,5 +1,8 @@
 package com.example.businessapp.repositories;
 
+import android.app.Application;
+
+import com.example.businessapp.R;
 import com.example.businessapp.api.models.AuthenticateModel;
 import com.example.businessapp.api.models.UsuarioJPS;
 import com.example.businessapp.api.models.User;

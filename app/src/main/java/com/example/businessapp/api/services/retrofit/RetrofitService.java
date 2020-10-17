@@ -15,7 +15,6 @@ public class RetrofitService {
                 .addInterceptor(new TokenAuthInterceptor(context))
                 .authenticator(new TokenAuthenticator(context))
                 .build();
-
     }
 
     private static Retrofit retrofitBuilder(Context context){

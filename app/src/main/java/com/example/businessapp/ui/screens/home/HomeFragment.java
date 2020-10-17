@@ -36,6 +36,8 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
 
+        checkLoginSuccess();
+
         return binding.getRoot();
     }
 
@@ -44,10 +46,16 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        checkLoginSuccess();
-
         // sets the user view model to handle user operations
         userViewModel = new ViewModelProvider(requireActivity()).get(UserViewModel.class);
+
+        // observa el estado de la sesion del usuario,
+        // si el usuario no esta logueado o se desloguea, se navega al login
+        userViewModel.usuarioLogeado.observe(getViewLifecycleOwner(), logueado -> {
+            if (!logueado) {
+                NavHostFragment.findNavController(this).navigate(R.id.loginFragment);
+            }
+        });
 
         binding.setUserViewModel(userViewModel);
 

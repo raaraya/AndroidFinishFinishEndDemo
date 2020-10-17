@@ -12,6 +12,7 @@ import com.example.businessapp.api.models.AuthenticateModel;
 import com.example.businessapp.api.models.UsuarioJPS;
 import com.example.businessapp.api.services.ResultCallBacks;
 import com.example.businessapp.repositories.UsersRepository;
+import com.example.businessapp.repositories.test.UsersRepositoryTest;
 
 import dagger.hilt.android.qualifiers.ApplicationContext;
 
@@ -31,7 +32,7 @@ public class UserViewModel extends ViewModel {
     }
 
     @ViewModelInject
-    public UserViewModel(UsersRepository usersRepository, @ApplicationContext Context context) {
+    public UserViewModel(UsersRepositoryTest usersRepository, @ApplicationContext Context context) {
         this.usersRepository = usersRepository;
 
         sharedPreferences = context.getSharedPreferences(context.getApplicationInfo().name, Context.MODE_PRIVATE);
@@ -50,9 +51,8 @@ public class UserViewModel extends ViewModel {
         usersRepository.authenticar(authenticateModel, new ResultCallBacks<UsuarioJPS>() {
             @Override
             public void onSuccess(UsuarioJPS result) {
-                usuarioLogeado.setValue(true);
                 usuarioJPS = result;
-
+                usuarioLogeado.setValue(true);
                 guardarUsuarioSharedPreferences();
             }
 
@@ -65,7 +65,7 @@ public class UserViewModel extends ViewModel {
     }
 
     public void cerrarSesion() {
-        usuarioLogeado.setValue(false);
+        usuarioLogeado.postValue(false);
         removerUsuarioSharedPrerefences();
     }
 
@@ -76,7 +76,8 @@ public class UserViewModel extends ViewModel {
         usuarioJPS.setPassword(sharedPreferences.getString("password", null));
         usuarioJPS.setToken(sharedPreferences.getString("token", null));
 
-        usuarioLogeado.postValue(sharedPreferences.getBoolean("logueado", false));
+        Boolean logueado = sharedPreferences.getBoolean("logueado", false);
+        usuarioLogeado.setValue(logueado);
     }
 
     public void guardarUsuarioSharedPreferences() {
