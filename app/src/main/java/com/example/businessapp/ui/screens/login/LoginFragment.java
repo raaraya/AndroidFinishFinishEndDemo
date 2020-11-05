@@ -97,8 +97,8 @@ public class LoginFragment extends Fragment {
             loginViewModel.esperandoRespuesta.postValue(true);
 
             // quema el usuario simulando un usuario entrado en texto
-            userViewModel.usuarioJPS.setUsername("user_puntosventa");
-            userViewModel.usuarioJPS.setPassword("123456.JPS");
+//            userViewModel.usuarioJPS.setUsername("user_puntosventa");
+//            userViewModel.usuarioJPS.setPassword("123456.JPS");
 
             userViewModel.iniciarSesion();
         });

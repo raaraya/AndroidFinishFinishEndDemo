@@ -13,9 +13,11 @@ import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
 
 import com.example.businessapp.R;
 import com.example.businessapp.databinding.FragmentNuevoUsuarioPasoUnoBinding;
@@ -33,8 +35,8 @@ public class NuevoUsuarioPasoUnoFragment extends Fragment {
                              Bundle savedInstanceState) {
 
          NavController controller = NavHostFragment.findNavController(this);
-         ViewModelStoreOwner owner = controller.getViewModelStoreOwner(R.id.nav_nuevo_vendedor_wizard_group);
-         viewModel = new ViewModelProvider(owner).get(NuevoUsuarioViewModel.class);
+         ViewModelStoreOwner owner = controller.getViewModelStoreOwner(R.id.nav_nuevoUsuario);
+         viewModel = new ViewModelProvider(owner, getDefaultViewModelProviderFactory()).get(NuevoUsuarioViewModel.class);
 
          binding = DataBindingUtil.inflate(inflater, R.layout.fragment_nuevo_usuario_paso_uno, container, false);
          binding.setLifecycleOwner(getActivity());
@@ -48,5 +50,11 @@ public class NuevoUsuarioPasoUnoFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         binding.nuevoUsuarioNext.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_nuevoUsuarioNext));
+
+
+        binding.radios.setOnCheckedChangeListener((radioGroup, i) -> {
+            viewModel.user.getValue().setName(((RadioButton) view.findViewById(i)).getText().toString());
+        });
+
     }
 }

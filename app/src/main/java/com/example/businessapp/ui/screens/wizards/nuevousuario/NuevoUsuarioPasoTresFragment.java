@@ -32,7 +32,7 @@ public class NuevoUsuarioPasoTresFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         NavController controller = NavHostFragment.findNavController(this);
-        ViewModelStoreOwner owner = controller.getViewModelStoreOwner(R.id.nav_nuevo_vendedor_wizard_group);
+        ViewModelStoreOwner owner = controller.getViewModelStoreOwner(R.id.nav_nuevoUsuario);
         viewModel = new ViewModelProvider(owner).get(NuevoUsuarioViewModel.class);
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_nuevo_usuario_paso_tres, container, false);

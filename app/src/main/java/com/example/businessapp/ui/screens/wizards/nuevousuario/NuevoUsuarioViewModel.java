@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.businessapp.api.models.User;
+import com.example.businessapp.repositories.UsersRepository;
 
 public class NuevoUsuarioViewModel extends ViewModel {
 
@@ -16,16 +17,21 @@ public class NuevoUsuarioViewModel extends ViewModel {
     public MutableLiveData<Boolean> working = new MutableLiveData<Boolean>(false);
     public MutableLiveData<Boolean> saved = new MutableLiveData<>(false);
 
+    UsersRepository repository;
+
+
 
     @ViewModelInject
-    public NuevoUsuarioViewModel() {
-
+    public NuevoUsuarioViewModel(UsersRepository repository) {
+        this.repository = repository;
     }
 
 
     public void saveUser() {
 
         working.postValue(true);
+
+
 
         // simula una llamada asyncrona al repositorio y a su vez al API
         Handler handler = new Handler();

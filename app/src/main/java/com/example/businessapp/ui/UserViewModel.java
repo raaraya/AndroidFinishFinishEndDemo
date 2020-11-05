@@ -22,7 +22,7 @@ public class UserViewModel extends ViewModel {
     private final SharedPreferences sharedPreferences;
 
     public MutableLiveData<Boolean> usuarioLogeado = new MutableLiveData<>(false);
-    public UsuarioJPS usuarioJPS;
+    private UsuarioJPS usuarioJPS;
 
     public MutableLiveData<Boolean> getUsuarioLogeado() {
         return usuarioLogeado;
@@ -32,7 +32,7 @@ public class UserViewModel extends ViewModel {
     }
 
     @ViewModelInject
-    public UserViewModel(UsersRepositoryTest usersRepository, @ApplicationContext Context context) {
+    public UserViewModel(UsersRepository usersRepository, @ApplicationContext Context context) {
         this.usersRepository = usersRepository;
 
         sharedPreferences = context.getSharedPreferences(context.getApplicationInfo().name, Context.MODE_PRIVATE);

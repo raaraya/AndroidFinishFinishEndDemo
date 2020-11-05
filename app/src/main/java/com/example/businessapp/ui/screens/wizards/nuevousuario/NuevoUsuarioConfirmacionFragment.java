@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.navigation.NavController;
+import androidx.navigation.NavGraphNavigator;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -31,7 +32,9 @@ public class NuevoUsuarioConfirmacionFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         NavController controller = NavHostFragment.findNavController(this);
-        ViewModelStoreOwner owner = controller.getViewModelStoreOwner(R.id.nav_nuevo_vendedor_wizard_group);
+        ViewModelStoreOwner owner = controller.getViewModelStoreOwner(R.id.nav_nuevoUsuario);
+
+
         viewModel = new ViewModelProvider(owner).get(NuevoUsuarioViewModel.class);
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_nuevo_usuario_confirmacion, container, false);

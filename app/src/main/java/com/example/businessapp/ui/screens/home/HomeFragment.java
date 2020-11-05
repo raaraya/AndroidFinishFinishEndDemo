@@ -36,8 +36,6 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
 
-        checkLoginSuccess();
-
         return binding.getRoot();
     }
 
@@ -66,23 +64,5 @@ public class HomeFragment extends Fragment {
         binding.nuevoVendedorWizardButton.setOnClickListener(
                 Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_nuevo_vendedor_wizard)
         );
-    }
-
-
-    private void checkLoginSuccess(){
-        // encuentra un NavController que corresponde a la navegacion
-        NavController navController = NavHostFragment.findNavController(this);
-
-        // con el NavController, obtenemos el entry de la historia actual, correspondiente al home Fragment
-        NavBackStackEntry navBackStackEntry = navController.getCurrentBackStackEntry();
-
-        // del NavBackStackEntry obtenemos el saved state handle, que es un hashmap que sirve para pasar parametros al navegar
-        SavedStateHandle savedStateHandle = navBackStackEntry.getSavedStateHandle();
-
-        //checkea si el saved state tiene un una variable LOGIN_SUCCESSFUL
-        Boolean loginSuccessful = savedStateHandle.get(LoginFragment.LOGIN_SUCCESSFUL);
-        if (loginSuccessful != null && !loginSuccessful) {
-            requireActivity().finish();
-        }
     }
 }
