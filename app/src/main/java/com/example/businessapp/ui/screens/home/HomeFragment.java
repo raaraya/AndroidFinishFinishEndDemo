@@ -64,5 +64,9 @@ public class HomeFragment extends Fragment {
         binding.nuevoVendedorWizardButton.setOnClickListener(
                 Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_nuevo_vendedor_wizard)
         );
+
+        binding.usuariosSelectButton.setOnClickListener(
+                Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_usuariosSelectFragment)
+        );
     }
 }

@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_nuevoUsuario"
             app:destination="@id/nav_nuevoUsuario" />
+        <action
+            android:id="@+id/action_homeFragment_to_usuariosSelectFragment"
+            app:destination="@id/usuariosSelectFragment" />
     </fragment>
     <navigation android:id="@+id/nav_nuevo_vendedor_wizard_group"
         app:startDestination="@id/pasoUnoFragment">
@@ -187,4 +190,9 @@
         android:name="com.example.businessapp.ui.screens.login.LoginFragment"
         android:label="login_fragment"
         tools:layout="@layout/login_fragment" />
+    <fragment
+        android:id="@+id/usuariosSelectFragment"
+        android:name="com.example.businessapp.ui.screens.usuariosselect.UsuariosSelectFragment"
+        android:label="usuarios_select_fragment"
+        tools:layout="@layout/usuarios_select_fragment" />
 </navigation>

@@ -35,7 +35,7 @@ public class NuevoUsuarioConfirmacionFragment extends Fragment {
         ViewModelStoreOwner owner = controller.getViewModelStoreOwner(R.id.nav_nuevoUsuario);
 
 
-        viewModel = new ViewModelProvider(owner).get(NuevoUsuarioViewModel.class);
+        viewModel = new ViewModelProvider(owner, getDefaultViewModelProviderFactory()).get(NuevoUsuarioViewModel.class);
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_nuevo_usuario_confirmacion, container, false);
         binding.setLifecycleOwner(getActivity());

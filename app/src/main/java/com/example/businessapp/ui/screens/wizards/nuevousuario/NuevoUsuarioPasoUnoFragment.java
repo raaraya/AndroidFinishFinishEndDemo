@@ -52,9 +52,9 @@ public class NuevoUsuarioPasoUnoFragment extends Fragment {
         binding.nuevoUsuarioNext.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_nuevoUsuarioNext));
 
 
-        binding.radios.setOnCheckedChangeListener((radioGroup, i) -> {
-            viewModel.user.getValue().setName(((RadioButton) view.findViewById(i)).getText().toString());
-        });
+//        binding.radios.setOnCheckedChangeListener((radioGroup, i) -> {
+//            viewModel.user.getValue().setName(((RadioButton) view.findViewById(i)).getText().toString());
+//        });
 
     }
 }
