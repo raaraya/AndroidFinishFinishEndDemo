@@ -22,8 +22,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_gravity="bottom"
+                android:layout_margin="25dp">
+
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -46,54 +48,48 @@
                     android:text="Cerrar Sesion"
                     android:layout_gravity="center"
                     style="@style/Widget.MaterialComponents.Button" />
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="bottom">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/usuarios_select_button"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_gravity="center"
-                    android:layout_margin="25dp">
-                    <Button
-                        android:id="@+id/usuarios_select_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Usuarios Select"
-                        android:layout_gravity="center" />
+                    android:text="Usuarios Select"
+                    android:layout_gravity="center" />
 
-                    <Button
-                        android:id="@+id/usuarios_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Ver Usuarios"
-                        android:layout_gravity="center" />
+                <Button
+                    android:id="@+id/usuarios_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ver Usuarios"
+                    android:layout_gravity="center" />
 
 
-                    <Button
-                        android:id="@+id/usuarios_nuevo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Nuevo Usuario"
-                        android:layout_gravity="center" />
+                <Button
+                    android:id="@+id/usuarios_nuevo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nuevo Usuario"
+                    android:layout_gravity="center" />
 
-                    <Button
-                        android:id="@+id/nuevo_punto_wizard_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Iniciar Nuevo Punto Wizard" />
+                <Button
+                    android:id="@+id/nuevo_punto_wizard_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Iniciar Nuevo Punto Wizard" />
 
-                    <Button
-                        android:id="@+id/nuevo_vendedor_wizard_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Iniciar Nuevo Vendedor Wizard" />
-                </LinearLayout>
+                <Button
+                    android:id="@+id/nuevo_vendedor_wizard_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Iniciar Nuevo Vendedor Wizard" />
+
+                <Button
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ejemplo Spinner" />
+
 
             </LinearLayout>
 

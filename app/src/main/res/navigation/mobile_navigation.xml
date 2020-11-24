@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_homeFragment_to_usuariosSelectFragment"
             app:destination="@id/usuariosSelectFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_ejemploSpinnerFragment"
+            app:destination="@id/ejemploSpinnerFragment" />
     </fragment>
     <navigation android:id="@+id/nav_nuevo_vendedor_wizard_group"
         app:startDestination="@id/pasoUnoFragment">
@@ -195,4 +198,9 @@
         android:name="com.example.businessapp.ui.screens.usuariosselect.UsuariosSelectFragment"
         android:label="usuarios_select_fragment"
         tools:layout="@layout/usuarios_select_fragment" />
+    <fragment
+        android:id="@+id/ejemploSpinnerFragment"
+        android:name="com.example.businessapp.ui.screens.ejemplospinner.EjemploSpinnerFragment"
+        android:label="ejemplo_spinner_fragment"
+        tools:layout="@layout/ejemplo_spinner_fragment" />
 </navigation>

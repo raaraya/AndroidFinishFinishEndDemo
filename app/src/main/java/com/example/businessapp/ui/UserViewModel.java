@@ -21,7 +21,7 @@ public class UserViewModel extends ViewModel {
     private final UsersRepository usersRepository;
     private final SharedPreferences sharedPreferences;
 
-    public MutableLiveData<Boolean> usuarioLogeado = new MutableLiveData<>(false);
+    public MutableLiveData<Boolean> usuarioLogeado = new MutableLiveData<>(true);
     private UsuarioJPS usuarioJPS;
 
     public MutableLiveData<Boolean> getUsuarioLogeado() {
@@ -77,7 +77,8 @@ public class UserViewModel extends ViewModel {
         usuarioJPS.setToken(sharedPreferences.getString("token", null));
 
         Boolean logueado = sharedPreferences.getBoolean("logueado", false);
-        usuarioLogeado.setValue(logueado);
+//        usuarioLogeado.setValue(logueado);
+        usuarioLogeado.setValue(true);
     }
 
     public void guardarUsuarioSharedPreferences() {
